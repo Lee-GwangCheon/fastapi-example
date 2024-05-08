@@ -11,3 +11,9 @@ mongodb_client = AsyncIOMotorClient(setting.mongodb_url)
 sereal_database: AsyncIOMotorDatabase = mongodb_client.get_database("seereal")
 feeds_collection: AsyncIOMotorCollection = sereal_database.get_collection("feeds")
 users_collection: AsyncIOMotorCollection = sereal_database.get_collection("users")
+reaction_collection: AsyncIOMotorCollection = sereal_database.get_collection(
+    "reactions"
+)
+bookmark_collection: AsyncIOMotorCollection = sereal_database.get_collection(
+    "bookmarks"
+)

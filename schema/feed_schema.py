@@ -1,5 +1,6 @@
 from typing import List, Optional
 from datetime import datetime
+from bson import ObjectId
 from pydantic import BaseModel, ConfigDict, Field
 
 from schema.schema_constants import PyObjectId
@@ -14,7 +15,9 @@ class ImageModel(BaseModel):
 
 class FeedModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    user_oid: str = Field(..., description="User OID for referencing the related user.")
+    user_oid: ObjectId = Field(
+        ..., description="User OID for referencing the related user."
+    )
     author_name: str = Field(...)
     author_tag_name: str = Field(...)
     text: str = Field(...)

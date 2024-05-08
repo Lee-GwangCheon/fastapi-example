@@ -1,5 +1,6 @@
 from datetime import datetime
 from typing import Optional
+from bson import ObjectId
 from pydantic import BaseModel, ConfigDict, Field
 
 from schema.schema_constants import PyObjectId
@@ -7,7 +8,8 @@ from schema.schema_constants import PyObjectId
 
 class ReactionModel(BaseModel):
     id: Optional[PyObjectId] = Field(alias="_id", default=None)
-    user_oid: str = Field(...)
+    user_oid: ObjectId = Field(...)
+    content_oid: ObjectId = Field(...)
     content_type: str = Field(...)
     reaction_type: str = Field(...)
     created_at: datetime = Field(default_factory=datetime.now)
@@ -18,7 +20,8 @@ class ReactionModel(BaseModel):
         arbitrary_types_allowed=True,
         json_schema_extra={
             "example": {
-                "user_oid": "oid",
+                "user_oid": "user_oid",
+                "content_oid": "content_oid",
                 "content_type": "content_type",
                 "reaction_type": "reaction_type",
                 "created_at": "2024-04-04T08:00:00",

@@ -1,0 +1,10 @@
+# Jetbrains
+.idea
+
+# Mac
+.DS_Store
+
+.env
+/env
+
+__pycache__
